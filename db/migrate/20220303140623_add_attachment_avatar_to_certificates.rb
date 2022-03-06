@@ -1,8 +1,8 @@
 class AddAttachmentAvatarToCertificates < ActiveRecord::Migration[5.0]
   def self.up
-    
-      add_attachment :certificates, :avatar
-    
+    change_table :certificates do |t|
+      t.attachment :avatar
+    end
   end
 
   def self.down
