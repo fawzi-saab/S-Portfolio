@@ -21,9 +21,9 @@ gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 #use bootsrtap for styles
-gem 'bootstrap-sass', '~> 3.4.1'
+gem 'bootstrap-sass', '~> 3.3.1'
 #use font awesom for icons
-gem 'font-awesome-sass', '~> 5.15.1'
+gem 'font-awesome-sass', '~> 4.2.0'
 #use devise for user logins
 gem 'devise'
 #use paperclip for images upload
