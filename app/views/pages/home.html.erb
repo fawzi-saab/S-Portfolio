@@ -1,0 +1,26 @@
+<div class="jumbotron text-center">
+    <h1>Welcome to S-Portfolio</h1>
+    <% if user_signed_in? %>
+        <% if current_user.profile %>
+        
+        <% else %>
+            <%= link_to "create your profile", new_user_profile_path(current_user), class: "btn btn-info btn-lg custom-width" %>
+        <% end %>
+       
+    <% else %>
+        <h3>Create your account and build your portfolio</h3>
+        <%= link_to "Sign Up Now", new_user_registration_path, class: "btn btn-info btn-lg custom-width" %>
+    <% end %>
+</div>
+<% if user_signed_in? %>
+    <% if current_user.profile %>
+        <div class="row">
+            <div class="well col-md-4 bg-color">
+                <h2 class="text-center">My Profile</h2>
+                <%= link_to "View Profile", user_path(current_user), class: "btn btn-info btn-lg btn-block" %>
+                <%= link_to "Edit your profile", edit_user_profile_path(current_user), class: "btn btn-info btn-lg btn-block" %>
+                <%= link_to "delete profile", user_profile_path(current_user), class: "btn btn-info btn-lg btn-block", method: "delete" %>
+            </div>
+        </div>
+    <% end %>
+<% end %>

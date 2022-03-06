@@ -1,0 +1,159 @@
+<div class="row">
+    <div class="col-md-3 text-center user-image">
+        <%= image_tag @profile.avatar.url(:thumb) %>
+        <% if user_signed_in? && current_user == @user %>
+            <%= link_to "delete image" , del_img_user_profile_path(current_user), class: "btn btn-info btn-sm" %>
+        <% end %>
+        <div class="well contact-info bg-color">
+            <h4><%= @profile.first_name.capitalize %> <%= @profile.last_name.capitalize %></h4>
+            <% if @profile.profession != "" %>
+                 <h6><%= @profile.profession.capitalize %></h6>
+            <% end %>
+            <div class="personal-info ">
+                <h5><%= @profile.country.capitalize %> 
+                <% if @profile.city != "" %>
+                    - <%= @profile.city.capitalize %>
+                <% end %>
+                </h5>
+                <i class="fas fa-globe"></i>
+            </div>
+            <div class="personal-info ">
+                <h5><%= @profile.phone_number %></h5>
+                <i class="fas fa-phone"></i>
+            </div>
+            <div class="personal-info ">
+                <h5><%= @profile.contact_email %></h5>
+                <i class="fas fa-at"></i>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="col-md-7 profile-content">
+        
+        <% if @profile.background_overview != "" %>
+        
+            <div class="well content bg-color">
+                <h3>About me:</h3>
+                <%= @profile.background_overview %>
+            </div>
+        <% end %>
+        
+        <!--------------------->
+        <!--education section-->
+        <!--------------------->
+        <% if user_signed_in? && current_user == @user %>
+                <div class="well content bg-color">
+                    <%= render "education" %>
+                    <div class="row justify-content-end">
+                            <div class="col-md-4 col-md-offset-8 add ">
+                                <%= link_to "Add Education", new_user_profile_education_path(current_user), class: "btn btn-info" %>
+                            </div>
+                        </div>
+                </div>
+        <% else %>
+            <% if @education != []%>
+                <div class="well content bg-color">
+                    <%= render "education" %>
+                </div>
+            <% end %>
+        <% end %>
+        
+        <!--------------------->
+        <!--experience section-->
+        <!--------------------->
+        
+            <% if user_signed_in? && current_user == @user %>
+                <div class="well bg-color">
+                    <div class="well content exp-color ">
+                        <h3>Professional Experience:</h3>
+                    </div>
+                    <%= render "experience" %>
+                    <div class="row justify-content-end">
+                        <div class="col-md-4 col-md-offset-8 add ">
+                            <%= link_to "Add Experience", new_user_profile_experience_path(current_user), class: "btn btn-info" %>
+                        </div>
+                    </div>
+                </div>
+                <% else %>
+                    <% if @experience != []%>
+                        <div class="well bg-color">
+                            <div class="well content exp-color">
+                                <h3>Professional Experience:</h3>
+                            </div>
+                            <%= render "experience" %>
+                        </div>
+                    <% end %>
+                
+            <% end %>
+        
+        
+        <!--------------------->
+        <!--Projects-->
+        <!--------------------->
+        
+        <% if user_signed_in? && current_user == @user %>
+        
+            <div class="well content bg-color">
+                <%= render "project" %>
+                <div class="row justify-content-end">
+                        <div class="col-md-4 col-md-offset-8 add ">
+                            <%= link_to "Add Project", new_user_profile_project_path(current_user), class: "btn btn-info" %>
+                        </div>
+                </div>
+            </div>
+        <% else %>
+            <% if @project != []%>
+                <div class="well content bg-color">
+                    <%= render "project" %>
+                </div>
+            <% end %>
+        <% end %>
+        
+        <!--------------------->
+        <!--Certificates-->
+        <!--------------------->
+        
+        <% if user_signed_in? && current_user == @user %>
+        
+            <div class="well content bg-color">
+                <%= render "certificate" %>
+                <div class="row justify-content-end">
+                        <div class="col-md-4 col-md-offset-8 add ">
+                            <%= link_to "Add Certificate", new_user_profile_certificate_path(current_user), class: "btn btn-info" %>
+                        </div>
+                </div>
+            </div>
+        <% else %>
+            <% if @certificate != []%>
+                <div class="well content bg-color">
+                    <%= render "certificate" %>
+                </div>
+            <% end %>
+        <% end %>
+        
+        <!--------------------->
+        <!--social Media-->
+        <!--------------------->
+        
+        <% if @profile.fb_link != "" ||  @profile.lkd_link != "" ||  @profile.github_link != "" %>
+            <div class="well content bg-color">
+                <h3>Social Media:</h3>
+                <div class="social-links">
+                    <% if @profile.fb_link != "" %>
+                        <a href="<%= @profile.fb_link %>"><i class="fab fa-facebook-square fa-2x"></i></a>
+                    <% end %>
+                    <% if @profile.lkd_link != "" %>
+                        <a href="<%= @profile.lkd_link %>"><i class="fab fa-linkedin fa-2x"></i></a>
+                    <% end %>
+                    <% if @profile.github_link != "" %>
+                        <a href="<%= @profile.github_link %>"><i class="fab fa-github-square fa-2x"></i></a>
+                    <% end %>
+                </div>
+            </div>
+        <% end %>
+    
+    
+    </div>
+    
+</div>

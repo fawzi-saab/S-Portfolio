@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="col-md-7 col-md-offset-3">
+        <div class="well bg-color">
+            <h2 class="text-center">Add Experience</h2>
+           <%= form_for @experience, url: user_profile_experiences_path, html: { multipart: true } do |f| %>
+                 <div class="form-group">
+                    <%= f.label :company_name %>
+                    <%= f.text_field :company_name, class:"form-control" ,required: true%>
+                </div>
+                <div class="form-group">
+                    <%= f.label :position_title %>
+                    <%= f.text_field :position_title, class:"form-control",required: true %>
+                </div>
+                
+                
+                <div class="form-inline row">
+                    <div class="col-md-5 lb-flex">
+                        <h4 class="date-form">From:</h4>
+                        <div class="form-group">
+                            <%= f.label :start_month, class: "hidden" %>
+                            <%= f.select :start_month , ["1","2","3","4","5","6","7","8","9","10","11","12"], required: true%>
+                        </div>
+                        
+                        <div class="form-group">
+                            <%= f.label :start_year , class: "hidden"%>
+                            <%= select_year Date.today, :start_year => Time.now.year, :end_year => Time.now.year - 30, :field_name => :start_year, :prefix => :experience %>
+                        </div>
+                    </div>
+                    <div class="col-md-7 lb-flex"> 
+                        <h4>To</h4><br><h4 class="small date-form">(Leave empty if current):</h4>
+                        <div class="form-group">
+                            <%= f.label :end_month, class: "hidden" %>
+                            <%= f.select :end_month , ["1","2","3","4","5","6","7","8","9","10","11","12"], :include_blank => true %>
+                        </div>
+                        <div class="form-group">
+                            <%= f.label :end_year, class: "hidden" %>
+                            <%= select_year Date.today, :start_year => Time.now.year, :end_year => Time.now.year - 30, :field_name => :end_year, :prefix => :experience, :include_blank => true%>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="form-group">
+                    <%= f.label :tasks_description %>
+                    <%= f.text_area :tasks_description, class:"form-control",required: true %>
+                </div>
+
+                <div class="form-group">
+                    <%= f.submit "Add", class: "btn btn-primary" %>
+                </div>
+                
+            <% end %>
+        </div>
+    </div>
+</div>

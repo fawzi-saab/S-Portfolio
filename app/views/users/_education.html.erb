@@ -1,0 +1,23 @@
+<h3>Educations:</h3>
+<table class="table">
+    <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Institute</th>
+          <th scope="col">Year of Graduation</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @education.each do |education| %>
+            <tr>
+              <td><%= education.title %></td>
+              <td><%= education.institute %></td>
+              <td><%= education.year_of_graduation %></td>
+              <% if user_signed_in? && current_user == @user %>
+                  <td><%= link_to "Edit", edit_user_profile_education_path(current_user, education), class: "btn btn-info btn-sm" %></td>
+                  <td><%= link_to "Delete", user_profile_education_path(current_user, education), class: "btn btn-info btn-sm", method: "delete" %></td>
+              <% end %>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

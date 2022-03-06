@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="well bg-color">
+            <h2 class="text-center">Add Education</h2>
+           <%= form_for @education, url: user_profile_educations_path, html: { multipart: true } do |f| %>
+                <div class="form-group">
+                    <%= f.label :title %>
+                    <%= f.text_field :title, class:"form-control",required: true %>
+                </div>
+                <div class="form-group">
+                    <%= f.label :institute %>
+                    <%= f.text_field :institute, class:"form-control",required: true %>
+                </div>
+               
+                
+                <div class="form-group">
+                    <%= f.label :year_of_graduation %>
+                    <%= f.number_field :year_of_graduation, class:"form-control",required: true %>
+                </div>
+
+                <div class="form-group">
+                    <%= f.submit "Add", class: "btn btn-primary" %>
+                </div>
+                
+            <% end %>
+        </div>
+    </div>
+</div>

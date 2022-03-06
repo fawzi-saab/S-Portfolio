@@ -1,0 +1,46 @@
+
+<% i = 1 %>       
+<% @experience.each do |experience| %>
+    <div class="well content exp-color">
+        <h3>Experience - <%= i %></h3>
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th scope="row">Company Name:</th>
+                    <td><%= experience.company_name %> </td>
+                </tr>
+                <tr>
+                    <th scope="row">Position Title:</th>
+                    <td><%= experience.position_title %> </td>
+                </tr>
+                <tr>
+                    <th scope="row">Start Date:</th>
+                    <td><%= experience.start_month %>- <%= experience.start_year %> </td>
+                </tr>
+                <tr>
+                    <th scope="row">End Date:</th>
+                    <td>
+                        <% if experience.end_month == nil%>
+                            Present
+                        <% else %>
+                            <%= experience.end_month %>- <%= experience.end_year %>
+                        <% end %>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Tasks description:</th>
+                    <td><%= experience.tasks_description %> </td>
+                </tr>
+            </tbody>
+        </table>
+        <% if user_signed_in? && current_user == @user %>
+            <div class="row">
+                <div class="col-md-4 col-md-offset-8 add ">
+                    <%= link_to "Edit", edit_user_profile_experience_path(current_user, experience), class: "btn btn-info" %>
+                    <%= link_to "Delete", user_profile_experience_path(current_user, experience), class: "btn btn-info", method: "delete" %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+    <% i = i+1 %>
+<% end %>
