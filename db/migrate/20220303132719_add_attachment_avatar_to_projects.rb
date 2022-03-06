@@ -1,8 +1,8 @@
 class AddAttachmentAvatarToProjects < ActiveRecord::Migration[5.0]
   def self.up
-    change_table :projects do |t|
-      t.attachment :avatar
-    end
+    
+      add_attachment :projects, :avatar
+    
   end
 
   def self.down
