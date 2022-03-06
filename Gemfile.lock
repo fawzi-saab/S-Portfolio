@@ -209,7 +209,7 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.0.5)
   paperclip
-  pg (~> 0.20)
+  pg
   puma (~> 3.0)
   rails (~> 5.0.7, >= 5.0.7.2)
   rails_12factor
