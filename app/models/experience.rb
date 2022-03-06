@@ -1,4 +1,4 @@
-class Experience < ApplicationRecord
+class Experience < ActiveRecord::Base
     belongs_to :profile
     validates :company_name, presence: true
     validates :position_title, presence: true
